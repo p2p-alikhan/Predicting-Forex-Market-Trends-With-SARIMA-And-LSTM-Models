@@ -19,6 +19,8 @@ sns.set(style="darkgrid")
 print("Downloading last 2 years data of EUR/USD from yahoo finance")
 data = yf.download('EURUSD=X', start='2022-07-01', end='2024-07-01')
 data = data[['Close']]
+print(data.head(15))
+print(data.tail(15))
 data_smooth = data.rolling(window=5).mean().dropna()
 data.loc[:, 'Close'] = pd.to_numeric(data['Close'], errors='coerce')
 
